@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { useState } from "react";
 import  FormularioCadastro  from "./components/FormularioCadastro/FormularioCadastro";
 import { Header } from "./components/Header";
 import TelaDaPostagem from "./components/TelaDaPostagem/TelaDaPostagem";
@@ -17,6 +18,10 @@ const Container = styled.div`
 `;
 
 function App() {
+
+  const[urlFoto, setUrlFoto] = useState("")
+  const[descricao, setDescricao] = useState("")
+  const[tituloFoto, setTituloFoto] = useState("")
   
   return (
     <>
@@ -24,9 +29,20 @@ function App() {
       <Container>
         <aside>
           <Header />
-          <FormularioCadastro />
+          <FormularioCadastro 
+            urlFoto={urlFoto}
+            setUrlFoto={setUrlFoto}
+            descricao={descricao}
+            setDescricao={setDescricao}
+            tituloFoto={tituloFoto}
+            setTituloFoto={setTituloFoto}/>
         </aside>
-        <TelaDaPostagem/>
+        <TelaDaPostagem
+           urlFoto={urlFoto}
+           descricao={descricao}
+           tituloFoto={tituloFoto}
+           setTituloFoto={setTituloFoto}
+          />
       </Container>
     </>
   );
